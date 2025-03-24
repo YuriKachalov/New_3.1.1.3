@@ -1,0 +1,25 @@
+
+
+.container-fluid {
+    height: 40px; 
+    margin: 0 auto;
+  }
+
+  
+    .top-margin {
+        margin-top: 10px;
+    }
+
+.text-button {
+    background: none;
+    border: none;
+    color: rgba(195, 191, 191, 0.32);
+    cursor: pointer;
+    font: inherit;
+    padding: 0;
+}
+.text-button:hover {
+    color: white;
+}
+
+
