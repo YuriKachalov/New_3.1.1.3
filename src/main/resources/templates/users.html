@@ -40,7 +40,7 @@
                 <ul class="navbar-nav me-auto mb-2 mb-lg-0 custom-table">
                     <li class="nav-item">
                         <a class="nav-link active" aria-current="page" href="#">
-                            <h3><span th:text="${user1.email}"></span></h3>
+                            <h3 class="fw-bolder"><span th:text="${user1.email}"></span></h3>
                         </a>
                     </li>
                     <li class="nav-item">
@@ -61,9 +61,9 @@
     <div class="row">
         <div class="col-12" style="background-color: rgb(243, 243, 243);">
             <div class="row align-items-start h-100">
-                <div class="col-lg-2" style="background-color: white; height: 100vh;">
-
-                    <div class="nav flex-column nav-pills " id="v-pills-tab" role="tablist"
+                <div class="col-lg-2"
+                     style="background-color: white; height: 100vh; margin-left: -3mm;">
+                    <div class="nav flex-column nav-pills " id="v-pills-tab" role="tablist" style="margin-right: -3mm;"
                          aria-orientation="vertical">
                         <li class="nav-item" role="presentation">
                             <div style="margin-top: 20px;"></div>
@@ -116,8 +116,8 @@
                                                         <thead>
                                                         <tr class="border-top">
                                                             <th scope="col">ID</th>
-                                                            <th scope="col">Name</th>
-                                                            <th scope="col">Surname</th>
+                                                            <th scope="col">First Name</th>
+                                                            <th scope="col">Last Name</th>
                                                             <th scope="col">Age</th>
                                                             <th scope="col">Email</th>
                                                             <th scope="col">Role</th>
@@ -132,7 +132,13 @@
                                                             <td th:text="${user.surname}"></td>
                                                             <td th:text="${user.age}"></td>
                                                             <td th:text="${user.email}"></td>
-                                                            <td th:text="${user.roleSet}"></td>
+                                                            <td>
+                                                                <span th:each="role, iterStat : ${user.roleSet}"
+                                                                      th:text="${role.role}" th:if="${role.role}"
+                                                                      style="margin-right: 7px;">
+                                                                    <span th:if="${iterStat.last()}"> </span>
+                                                                </span>
+                                                            </td>
 
                                                             <td>
 
@@ -181,7 +187,8 @@
                                                                                 <div class="mb-3">
                                                                                     <p class="text-center">
                                                                                         <label for="name"
-                                                                                               class="form-label fw-bolder">Name</label>
+                                                                                               class="form-label fw-bolder">First
+                                                                                            Name</label>
                                                                                         <input type="text"
                                                                                                id="name" name="name"
                                                                                                class="form-control custom-input"
@@ -193,7 +200,8 @@
                                                                                 <div class="mb-3">
                                                                                     <p class="text-center">
                                                                                         <label for="surname"
-                                                                                               class="form-label fw-bolder">Surname</label>
+                                                                                               class="form-label fw-bolder">Last
+                                                                                            Name</label>
                                                                                         <input type="text"
                                                                                                id="surname"
                                                                                                name="surname"
@@ -325,7 +333,8 @@
                                                                                 <div class="mb-3">
                                                                                     <p class="text-center">
                                                                                         <label for="name1"
-                                                                                               class="form-label fw-bolder">Name</label>
+                                                                                               class="form-label fw-bolder">First
+                                                                                            Name</label>
                                                                                         <input type="text"
                                                                                                id="name1"
                                                                                                th:value="${user.name}"
@@ -339,7 +348,8 @@
                                                                                 <div class="mb-3">
                                                                                     <p class="text-center">
                                                                                         <label for="surname1"
-                                                                                               class="form-label fw-bolder">Surname</label>
+                                                                                               class="form-label fw-bolder">Last
+                                                                                            Name</label>
                                                                                         <input type="text"
                                                                                                id="surname1"
                                                                                                th:value="${user.surname}"
@@ -447,25 +457,27 @@
                                                                         <div style="margin-top: 20px;"></div>
                                                                         <p class="text-center">
                                                                             <label for="name2"
-                                                                                   class="form-label fw-bolder">Name</label>
+                                                                                   class="form-label fw-bolder">First
+                                                                                Name</label>
                                                                             <input type="text" name="name"
                                                                                    id="name2"
                                                                                    class="form-control"
                                                                                    style="width: 80%; margin: 0 auto; display: block;"
-                                                                                   placeholder="Name">
+                                                                                   placeholder="First Name">
                                                                         </p>
                                                                     </div>
 
                                                                     <div class="mb-3">
                                                                         <p class="text-center">
                                                                             <label for="surname2"
-                                                                                   class="form-label fw-bolder">Surname</label>
+                                                                                   class="form-label fw-bolder">Last
+                                                                                Name</label>
                                                                             <input type="text"
 
                                                                                    name="surname"
                                                                                    id="surname2" class="form-control"
                                                                                    style="width: 80%; margin: 0 auto; display: block;"
-                                                                                   placeholder="Surname">
+                                                                                   placeholder="Last Name">
                                                                         </p>
                                                                     </div>
 

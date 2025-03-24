@@ -35,7 +35,7 @@
                 <ul class="navbar-nav me-auto mb-2 mb-lg-0 custom-table">
                     <li class="nav-item">
                         <a class="nav-link active" aria-current="page" href="#">
-                            <h3><span th:text="${user.email}"></span></h3>
+                            <h3 class="fw-bolder"><span th:text="${user.email}"></span></h3>
                         </a>
                     </li>
                     <li class="nav-item">
@@ -56,17 +56,19 @@
     <div class="row">
         <div class="col-12" style="background-color: rgb(243, 243, 243);">
             <div class="row align-items-start h-100">
-                <div class="col-lg-2 col-12" style="background-color: white; height: 100vh;">
-                    <ul class="nav flex-column">
+                <div class="col-lg-2"
+                     style="background-color: white; height: 100vh; margin-left: -3mm;">
+                    <div class="nav flex-column nav-pills " id="v-pills-tab" role="tablist" style="margin-right: -3mm;"
+                         aria-orientation="vertical">
                         <div style="margin-top: 20px;"></div>
-                        <li class="nav-item">
-                            <a class="nav-link active" aria-current="page" href="#" onclick="setActive(this)"
-                               style="background-color: blue; color: aliceblue;">User</a>
+                        <li class="nav-item" role="presentation">
+                            <a class="nav-link active w-100 mylink" href="#" role="tab"
+                               aria-selected="true">User</a>
                         </li>
-                    </ul>
+                    </div>
                 </div>
                 <div class="col-lg-10" style="height: 100vh;">
-                    <h1 class="text-lg-start text-capitalize">User information-page</h1>
+                    <h1>User information-page</h1>
                     <table class="table table-bordered w-100">
                         <thead>
                         <tr class="table-header">
@@ -80,8 +82,8 @@
                                     <thead>
                                     <tr class="border-top">
                                         <th scope="col">ID</th>
-                                        <th scope="col">Name</th>
-                                        <th scope="col">Surname</th>
+                                        <th scope="col">First Name</th>
+                                        <th scope="col">Last Name</th>
                                         <th scope="col">Age</th>
                                         <th scope="col">Email</th>
                                         <th scope="col">Role</th>
@@ -94,7 +96,13 @@
                                         <td><p><span th:text="${user.surname}"></span></p></td>
                                         <td><p><span th:text="${user.age}"></span></p></td>
                                         <td><p><span th:text="${user.email}"></span></p></td>
-                                        <td><p><span th:text="${user.roleSet}"></span></p></td>
+                                        <td>
+                                            <span th:each="role, iterStat : ${user.roleSet}"
+                                                  th:text="${role.role}" th:if="${role.role}"
+                                                  style="margin-right: 7px;">
+                                                <span th:if="${iterStat.last()}"> </span>
+                                            </span>
+                                        </td>
                                     </tr>
                                     </tbody>
                                 </table>
